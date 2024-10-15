@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package lahiri.v1;
+
+import "proto/v1/common/utils.proto";
+
+message Discount {
+  string id = 1;
+  string code = 2;
+  double percentage = 3;
+}
+
+message ApplyDiscountRequest {
+  string user_id = 1;
+  string order_id = 2;
+  string discount_code = 3;
+}
+
+message ApplyDiscountResponse {
+  string discount_id = 1;
+  double new_total = 2;
+}
+
+service PromotionService {
+  rpc ApplyDiscount(ApplyDiscountRequest) returns (ApplyDiscountResponse);
+}
